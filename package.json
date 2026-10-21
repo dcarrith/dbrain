@@ -1,0 +1,50 @@
+{
+  "name": "@dbrain/core",
+  "version": "1.10.0",
+  "description": "dbrain — Open-Source Decentralized Brain Engine (5-Lobe Merkle Cortex, Rust/WASM BPC Accelerator, .dig Capsules, MCP 2024-11-05 & CHIP-0043 Air-Gapped Clear Signing) for Homelabs, Local Communities, and Cities",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dcarrith/dbrain.git"
+  },
+  "homepage": "https://github.com/dcarrith/dbrain",
+  "keywords": [
+    "dbrain",
+    "ai-agents",
+    "mcp",
+    "model-context-protocol",
+    "chia",
+    "datalayer",
+    "chip-0035",
+    "chip-0043",
+    "clear-signing",
+    "merkle-tree",
+    "webassembly",
+    "rust",
+    "homelab",
+    "civic-tech"
+  ],
+  "main": "./lib/dbrain-core.js",
+  "exports": {
+    ".": "./lib/dbrain-core.js",
+    "./core": "./lib/dbrain-core.js",
+    "./browser-crypto": "./lib/dbrain-browser-crypto.js",
+    "./server": "./lib/dbrain-server.js"
+  },
+  "bin": {
+    "dbrain": "./cli/dbrain.mjs",
+    "dbrain-mcp": "./cli/dbrain-mcp.mjs"
+  },
+  "scripts": {
+    "start": "node cli/dbrain.mjs serve",
+    "cli": "node cli/dbrain.mjs",
+    "mcp": "node cli/dbrain-mcp.mjs",
+    "build:rust": "node scripts/build-rust-core.mjs",
+    "test:unit": "node --test --experimental-test-coverage --test-coverage-include=\"lib/dbrain-core.js\" --test-coverage-include=\"lib/dbrain-browser-crypto.js\" --test-coverage-lines=100 --test-coverage-functions=100 --test-coverage-branches=100 tests/dbrain-core.test.js",
+    "test:coverage": "npm run test:unit",
+    "test": "npm run test:unit"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

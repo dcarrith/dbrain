@@ -1,0 +1,30 @@
+[
+  {
+    "id": "CAP-COMMUNITY-0001",
+    "storeId": "0x22b0community0000000000000000000000000000000000000000000000000002",
+    "lobe": "procedural",
+    "key": "brain/procedural/community-commons-sop.json",
+    "keyHex": "0x627261696e2f70726f6365647572616c2f636f6d6d756e6974792d636f6d6d6f6e732d736f702e6a736f6e",
+    "title": "Community Commons & Shared Resource Scheduling Protocol",
+    "summary": "Standard operating procedures for shared community hardware, solar microgrid balancing, and member knowledge contributions.",
+    "content": "Verified procedural memory capsule anchored to the Community Co-op CHIP-0035 singleton store with 6-hour batched L1 checkpoints.",
+    "tags": ["community", "co-op", "commons", "procedural"],
+    "authorDid": "did:chia:1communitycoopquorum000000000000000000000000000000000000",
+    "createdAt": "2026-10-21T00:00:00.000Z",
+    "generation": 1
+  },
+  {
+    "id": "CAP-COMMUNITY-0002",
+    "storeId": "0x22b0community0000000000000000000000000000000000000000000000000002",
+    "lobe": "alignment",
+    "key": "brain/alignment/community-2of3-mips-vault.json",
+    "keyHex": "0x627261696e2f616c69676e6d656e742f636f6d6d756e6974792d326f66332d6d6970732d7661756c742e6a736f6e",
+    "title": "Community 2-of-3 CHIP-0043 Multi-Device Clear-Signing Charter",
+    "summary": "Requires 2-of-3 steward signatures (Secp256r1 Passkey + Secp256k1 Hardware Wallet) with 7-day ForceSingletonRecreationMod recovery.",
+    "content": "Protects community treasury grants and shared store writer delegations against unilateral key compromise or blind-signing drains.",
+    "tags": ["alignment", "community", "chip-0043", "quorum"],
+    "authorDid": "did:chia:1communitycoopquorum000000000000000000000000000000000000",
+    "createdAt": "2026-10-21T00:00:00.000Z",
+    "generation": 1
+  }
+]

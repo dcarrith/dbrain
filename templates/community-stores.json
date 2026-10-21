@@ -1,0 +1,20 @@
+[
+  {
+    "storeId": "0x22b0community0000000000000000000000000000000000000000000000000002",
+    "name": "Local Community & Co-op Shared Cortex",
+    "description": "Multi-member community, makerspace, or research co-op brain with Plane-1 LAN gossip, provider-blind private member namespaces, and 2-of-3 CHIP-0043 MIPS vault custody.",
+    "digUri": "dig://0x22b0community0000000000000000000000000000000000000000000000000002/community-v1",
+    "merkleRoot": "0x8b42f1c93d7742b6e013c7d52a8f9b0123d45e67f89a01b2c3d4e5f6a7b8c902",
+    "generation": 1,
+    "lastUpdatedBlock": 2001,
+    "network": "mainnet",
+    "totalCapsules": 8,
+    "sizeBytes": 32768,
+    "readLatencyP99Ms": 0.045,
+    "deltaSyncCompressionPct": 96.2,
+    "mirrorNodes": 3,
+    "ownerDid": "did:chia:1communitycoopquorum000000000000000000000000000000000000",
+    "lobes": ["episodic", "semantic", "procedural", "working", "alignment"],
+    "status": "SYNCHRONIZED"
+  }
+]

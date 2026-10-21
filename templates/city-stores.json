@@ -1,0 +1,38 @@
+[
+  {
+    "storeId": "0x33c0citymesh00000000000000000000000000000000000000000000000000003",
+    "name": "Municipal Civic Knowledge, Permitting & Public Code Cortex",
+    "description": "City-wide verifiable semantic and procedural memory for municipal code, zoning, permitting workflows, and public records with SHA-256 Merkle proofs.",
+    "digUri": "dig://0x33c0citymesh00000000000000000000000000000000000000000000000000003/civic-code-v1",
+    "merkleRoot": "0x9c53a2d04e8853c7f124d8e63b9a0c1234e56f78a90b12c3d4e5f6a7b8c9d003",
+    "generation": 1,
+    "lastUpdatedBlock": 3001,
+    "network": "mainnet",
+    "totalCapsules": 12,
+    "sizeBytes": 65536,
+    "readLatencyP99Ms": 0.045,
+    "deltaSyncCompressionPct": 96.2,
+    "mirrorNodes": 12,
+    "ownerDid": "did:chia:1municipalciviccouncil0000000000000000000000000000000000",
+    "lobes": ["semantic", "procedural", "alignment"],
+    "status": "SYNCHRONIZED"
+  },
+  {
+    "storeId": "0x33c0citygrid00000000000000000000000000000000000000000000000000004",
+    "name": "City Transit, Utilities & Emergency Response Swarm Cortex",
+    "description": "Federated municipal telemetry and emergency coordination cortex with 15s Split-Brain Partition Fence, <1ms Ring-0 emergency reflex override, and 3-of-5 CHIP-0043 treasury custody.",
+    "digUri": "dig://0x33c0citygrid00000000000000000000000000000000000000000000000000004/civic-grid-v1",
+    "merkleRoot": "0xad64b3e15f9964d8a235e9f74c0b1d2345f67a89b01c23d4e5f6a7b8c9d0e104",
+    "generation": 1,
+    "lastUpdatedBlock": 3002,
+    "network": "mainnet",
+    "totalCapsules": 16,
+    "sizeBytes": 98304,
+    "readLatencyP99Ms": 0.045,
+    "deltaSyncCompressionPct": 96.2,
+    "mirrorNodes": 12,
+    "ownerDid": "did:chia:1municipalciviccouncil0000000000000000000000000000000000",
+    "lobes": ["episodic", "working", "procedural", "alignment"],
+    "status": "SYNCHRONIZED"
+  }
+]

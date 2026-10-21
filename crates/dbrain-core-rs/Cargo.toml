@@ -1,0 +1,23 @@
+[package]
+name = "dbrain-core-rs"
+version = "1.9.0"
+edition = "2021"
+authors = ["dbrain.to Sovereign Cortex Contributors"]
+description = "High-performance Rust & WebAssembly/N-API cryptographic and cognitive routing core for dbrain.to (Chia BENES01\\0 u128 factoradic permutation engine, contiguous-arena D5/D8 SHA-256 Merkle tree, SIMD 8D LSH cosine recall, Chia Bech32m polynomial codec, and zero-copy Second Brain vault scanner)."
+license = "MIT"
+repository = "https://github.com/dbrain-to/dbrain.to"
+
+[lib]
+name = "dbrain_core_rs"
+crate-type = ["cdylib", "rlib"]
+
+[features]
+default = ["simd"]
+simd = []
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = true

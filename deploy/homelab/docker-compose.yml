@@ -1,0 +1,26 @@
+services:
+  dbrain-homelab:
+    build:
+      context: ../..
+      dockerfile: deploy/Dockerfile
+    container_name: dbrain-homelab
+    restart: unless-stopped
+    ports:
+      - "${PORT:-3000}:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - DBRAIN_TOPOLOGY_PROFILE=homelab
+      - DBRAIN_NODE_NAME=${DBRAIN_NODE_NAME:-Homelab Sovereign Brain}
+      - DBRAIN_DATA_DIR=/var/lib/dbrain
+      - CHIA_NETWORK=${CHIA_NETWORK:-mainnet}
+    volumes:
+      - dbrain-homelab-data:/var/lib/dbrain
+    security_opt:
+      - no-new-privileges:true
+    read_only: true
+    tmpfs:
+      - /tmp
+
+volumes:
+  dbrain-homelab-data:

@@ -1,0 +1,66 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: dbrain-community
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: dbrain-community-config
+  namespace: dbrain-community
+data:
+  DBRAIN_TOPOLOGY_PROFILE: "community"
+  DBRAIN_NODE_NAME: "Local Community & Co-op Shared Brain"
+  CHIA_NETWORK: "mainnet"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dbrain-community
+  namespace: dbrain-community
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: dbrain-community
+  template:
+    metadata:
+      labels:
+        app: dbrain-community
+    spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1001
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: dbrain
+          image: dbrain:1.10.0
+          ports:
+            - containerPort: 3000
+          envFrom:
+            - configMapRef:
+                name: dbrain-community-config
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: ["ALL"]
+          volumeMounts:
+            - name: data
+              mountPath: /var/lib/dbrain
+      volumes:
+        - name: data
+          emptyDir: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: dbrain-community
+  namespace: dbrain-community
+spec:
+  selector:
+    app: dbrain-community
+  ports:
+    - port: 80
+      targetPort: 3000

@@ -1,0 +1,13 @@
+node_modules/
+dist/
+build/
+crates/dbrain-core-rs/target/
+.DS_Store
+*.log
+.env
+.env.*
+!.env.example
+.dbrain-data/
+.dig/
+*.pem
+*.key

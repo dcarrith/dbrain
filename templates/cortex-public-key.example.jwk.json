@@ -1,0 +1,9 @@
+{
+  "kty": "RSA",
+  "alg": "RSA-OAEP-256",
+  "use": "enc",
+  "kid": "dbrain-example-cortex-key-replace-via-dbrain-keygen",
+  "key_ops": ["encrypt", "wrapKey"],
+  "ext": true,
+  "note": "Run `npx dbrain keygen` or `npx dbrain init` to generate your own unique 4096-bit RSA-OAEP-256 Private Cortex JWK keypair."
+}

@@ -1,0 +1,30 @@
+[
+  {
+    "id": "CAP-HOMELAB-0001",
+    "storeId": "0x11a0homelab000000000000000000000000000000000000000000000000000001",
+    "lobe": "semantic",
+    "key": "brain/semantic/homelab-topology.json",
+    "keyHex": "0x627261696e2f73656d616e7469632f686f6d656c61622d746f706f6c6f67792e6a736f6e",
+    "title": "Homelab LAN, NAS & NPU Topology Blueprint",
+    "summary": "Canonical topology of local NVMe storage, NAS NFS mounts, and local LLM/MCP endpoints.",
+    "content": "Homelab Decentralized Brain running with 0.018ms P50 / 0.045ms P99 Rust BPC recall and 1-of-1 Secp256r1 Passkey clear signing.",
+    "tags": ["homelab", "nvme", "nas", "mcp"],
+    "authorDid": "did:chia:1homelaboperator0000000000000000000000000000000000000000",
+    "createdAt": "2026-10-21T00:00:00.000Z",
+    "generation": 1
+  },
+  {
+    "id": "CAP-HOMELAB-0002",
+    "storeId": "0x11a0homelab000000000000000000000000000000000000000000000000000001",
+    "lobe": "alignment",
+    "key": "brain/alignment/homelab-clear-signing-policy.json",
+    "keyHex": "0x627261696e2f616c69676e6d656e742f686f6d656c61622d636c6561722d7369676e696e672d706f6c6963792e6a736f6e",
+    "title": "Homelab CHIP-0043 Passkey Clear-Signing Guardrail",
+    "summary": "Requires 1-of-1 Secp256r1 Secure Enclave Passkey verification for any external spend or singleton writer rotation.",
+    "content": "Enforces xch-dev/chia-wallet-sdk 7-step clear_signing verification and ForceSingletonRecreationMod 7-layer recovery chain.",
+    "tags": ["alignment", "chip-0043", "clear-signing", "passkey"],
+    "authorDid": "did:chia:1homelaboperator0000000000000000000000000000000000000000",
+    "createdAt": "2026-10-21T00:00:00.000Z",
+    "generation": 1
+  }
+]

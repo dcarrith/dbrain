@@ -1,0 +1,30 @@
+[
+  {
+    "id": "CAP-CITY-0001",
+    "storeId": "0x33c0citymesh00000000000000000000000000000000000000000000000000003",
+    "lobe": "semantic",
+    "key": "brain/semantic/municipal-zoning-and-permitting.json",
+    "keyHex": "0x627261696e2f73656d616e7469632f6d756e69636970616c2d7a6f6e696e672d616e642d7065726d697474696e672e6a736f6e",
+    "title": "Municipal Code, Zoning & Automated Permitting Knowledge Graph",
+    "summary": "Publicly verifiable municipal statutes, building codes, and civic service workflows indexed via Benes Permutation Compression (BPC).",
+    "content": "Every citizen and municipal AI agent can verify exact statutory provenance via RFC 6962 D5/D8 binary Merkle inclusion proofs.",
+    "tags": ["city", "municipal", "permitting", "public-records"],
+    "authorDid": "did:chia:1municipalciviccouncil0000000000000000000000000000000000",
+    "createdAt": "2026-10-21T00:00:00.000Z",
+    "generation": 1
+  },
+  {
+    "id": "CAP-CITY-0002",
+    "storeId": "0x33c0citygrid00000000000000000000000000000000000000000000000000004",
+    "lobe": "alignment",
+    "key": "brain/alignment/municipal-emergency-reflex-and-vault.json",
+    "keyHex": "0x627261696e2f616c69676e6d656e742f6d756e69636970616c2d656d657267656e63792d7265666c65782d616e642d7661756c742e6a736f6e",
+    "title": "City Emergency Partition Fence & 3-of-5 Municipal Treasury MIPS Vault",
+    "summary": "Enforces 15s Alignment Lease TTL during fiber/storm partitions, <1ms Ring-0 emergency director override, and 3-of-5 CHIP-0043 clear signing.",
+    "content": "Prevents split-brain dispatch across district agent swarms during communications outages and requires air-gapped clear signing for municipal disbursements.",
+    "tags": ["city", "emergency-response", "split-brain-fence", "chip-0043"],
+    "authorDid": "did:chia:1municipalciviccouncil0000000000000000000000000000000000",
+    "createdAt": "2026-10-21T00:00:00.000Z",
+    "generation": 1
+  }
+]

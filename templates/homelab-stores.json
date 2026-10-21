@@ -1,0 +1,20 @@
+[
+  {
+    "storeId": "0x11a0homelab000000000000000000000000000000000000000000000000000001",
+    "name": "Homelab Sovereign Cortex (Local NVMe + Passkey Vault)",
+    "description": "Personal & homelab 5-lobe agent brain for infrastructure automation, local Markdown vault sync, and Secp256r1 Passkey clear signing.",
+    "digUri": "dig://0x11a0homelab000000000000000000000000000000000000000000000000000001/cortex-v1",
+    "merkleRoot": "0x7a91e4f02c8831a5d902b6c41f7e8a9012c34d56e78f90a1b2c3d4e5f6a7b801",
+    "generation": 1,
+    "lastUpdatedBlock": 1001,
+    "network": "mainnet",
+    "totalCapsules": 5,
+    "sizeBytes": 16384,
+    "readLatencyP99Ms": 0.045,
+    "deltaSyncCompressionPct": 96.2,
+    "mirrorNodes": 1,
+    "ownerDid": "did:chia:1homelaboperator0000000000000000000000000000000000000000",
+    "lobes": ["episodic", "semantic", "procedural", "working", "alignment"],
+    "status": "SYNCHRONIZED"
+  }
+]
