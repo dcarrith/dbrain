@@ -1,11 +1,11 @@
 //! # `dbrain-core-rs` — High-Performance Rust Cryptographic & Cognitive Routing Core
 //!
-//! Zero-dependency Rust acceleration crate for `dbrain.to` (`DBRAIN-v1.2`), compiled to:
+//! Zero-dependency Rust acceleration crate for `dbrain.to` (`DBRAIN-v1.3`), compiled to:
 //! 1. **Native Machine Code (`cdylib` / N-API `.node`)** for Node.js server & MCP pods (`aarch64` / `x86_64`).
 //! 2. **Portable WebAssembly (`wasm32-unknown-unknown`)** for the browser `/dApp/` and universal edge verification.
 //!
 //! ## Accelerated Subsystems
-//! - [`benes`]: `BENES01\0` Waksman/Beneš permutation compression, decompression, and $O(\log N)$
+//! - [`benes`]: Benes Permutation Compression (BPC), decompression, and $O(\log N)$
 //!   bidirectional routing using native 128-bit (`u128`) factoradic arithmetic and hardware
 //!   `POPCNT` / `TZCNT` instructions (**203x–707x speedup** over V8 `BigInt`).
 //! - [`bech32m`]: Stack-allocated Chia Bech32m GF($2^5$) polynomial checksum and `xch1`/`txch1`

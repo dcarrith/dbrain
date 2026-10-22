@@ -391,9 +391,10 @@ describe('Suite 3: Pillar 2 — Normative DIG Network Protocol (@dignetwork/dig-
 });
 
 describe('Suite 4: Pillar 3 & 4 — 5-Lobe Merkle Store, SWE-ContextBench Hybrid Recall & Merkle Delta Sync', () => {
-  it('4.1 normalizes DBRAIN-v1.2 protocol versions and upgrades legacy DIG-BRAIN aliases', () => {
+  it('4.1 normalizes DBRAIN-v1.3 protocol versions and upgrades legacy DBRAIN-v1.2 / DIG-BRAIN aliases', () => {
     assert.equal(core.normalizeDbrainProtocol().valid, true);
-    assert.equal(core.normalizeDbrainProtocol('DBRAIN-v1.2').upgradedFromLegacy, false);
+    assert.equal(core.normalizeDbrainProtocol('DBRAIN-v1.3').upgradedFromLegacy, false);
+    assert.equal(core.normalizeDbrainProtocol('DBRAIN-v1.2').upgradedFromLegacy, true);
     assert.equal(core.normalizeDbrainProtocol('DIG-BRAIN-v1.2').upgradedFromLegacy, true);
     assert.equal(core.normalizeDbrainProtocol('UNKNOWN-v9.9').valid, false);
   });
@@ -498,7 +499,7 @@ describe('Suite 4: Pillar 3 & 4 — 5-Lobe Merkle Store, SWE-ContextBench Hybrid
   });
 });
 
-describe('Suite 5: Pillar 5 — Git for Agent Memories (DBRAIN-v1.2 Cognitive Version Control)', () => {
+describe('Suite 5: Pillar 5 — Git for Agent Memories (DBRAIN-v1.3 Cognitive Version Control)', () => {
   it('5.1 executes dbrain commit, zero-copy fork, Merkle get_kv_diff, checkout, bisect & non-destructive revert', () => {
     const store = {
       storeId: `0x${SAMPLE_STORE_ID}`,
@@ -514,6 +515,19 @@ describe('Suite 5: Pillar 5 — Git for Agent Memories (DBRAIN-v1.2 Cognitive Ve
 
     assert.throws(() => core.mintCognitiveCapsule({ store, capsules, title: '', content: '' }), /required/);
 
+    const defaultExt = core.buildDbrainV13CapsuleExtensions({
+      id: 'CAP-TEST-0001',
+      storeId: store.storeId,
+      key: 'dbrain:lobe:semantic:test',
+      content: 'test payload',
+      contentHash: '0x11',
+      merkleRoot: store.merkleRoot,
+      commitSha: '0x22'
+    });
+    assert.equal(defaultExt.clearSignature.chipStandard, 'CHIP-0028');
+    assert.equal(defaultExt.bpcEnvelope.magic, 'BPC1');
+    assert.equal(defaultExt.pqcSignature.algorithm, 'ML-DSA-65+Ed25519-Hybrid');
+
     const m1 = core.mintCognitiveCapsule({
       store,
       capsules,
@@ -522,6 +536,10 @@ describe('Suite 5: Pillar 5 — Git for Agent Memories (DBRAIN-v1.2 Cognitive Ve
       content: 'Preserve mask when operand.mask is None in _arithmetic_mask.',
       spoTriples: [{ subject: 'NDDataRef', predicate: 'HANDLES_MASK', object: 'None' }]
     });
+    assert.equal(m1.capsule.protocol, 'DBRAIN-v1.3');
+    assert.equal(m1.capsule.clearSignature.safetyVerdict, 'SAFE_TO_SIGN');
+    assert.equal(m1.capsule.bpcEnvelope.magic, 'BPC1');
+    assert.equal(m1.capsule.pqcSignature.quantumResistant, true);
     store.generations.push({ generation: store.generation, merkleRoot: store.merkleRoot });
 
     const m2 = core.mintCognitiveCapsule({

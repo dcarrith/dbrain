@@ -19,7 +19,7 @@ const state = loadNodeProfile();
 const TOOLS = [
   {
     name: 'dbrain_remember',
-    description: 'Mint and anchor a signed DBRAIN-v1.2 memory capsule into a Chia DataLayer Brain Store.',
+    description: 'Mint and anchor a signed DBRAIN-v1.3 memory capsule into a Chia DataLayer Brain Store.',
     inputSchema: {
       type: 'object',
       properties: {

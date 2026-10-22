@@ -161,7 +161,7 @@ async function run() {
       tags: ['cli', state.profile.id],
       authorDid: targetStore.ownerDid
     });
-    console.log(`\n✅ Minted DBRAIN-v1.2 Capsule: ${minted.capsule.id}`);
+    console.log(`\n✅ Minted DBRAIN-v1.3 Capsule: ${minted.capsule.id}`);
     console.log(`  Store ID      : ${minted.capsule.storeId}`);
     console.log(`  DataLayer Key : ${minted.capsule.key}`);
     console.log(`  Content SHA256: ${minted.capsule.contentHash}`);
@@ -211,7 +211,7 @@ Commands:
   serve [--profile <p>] [--port 3000]           Start HTTP + MCP 2024-11-05 + Clear-Signing server
   stores [--profile <p>]                        List active Chia DataLayer Singleton Stores
   recall --query "<text>" [--lobe <lobe>]       Sub-millisecond hybrid recall (Rust SIMD + u128 BPC)
-  mint --lobe <lobe> --title "<t>" --content "<c>"  Mint & commit a signed DBRAIN-v1.2 capsule
+  mint --lobe <lobe> --title "<t>" --content "<c>"  Mint & commit a signed DBRAIN-v1.3 capsule
   verify --id <capsuleId>                       Verify SHA-256 Merkle inclusion proof
   clear-sign [--preset <id>] [--device <dev>]   Run 7-step CHIP-0043 Clear Signing verification & sign
 `);
