@@ -399,12 +399,29 @@ describe('Suite 4: Pillar 3 & 4 — 5-Lobe Merkle Store, SWE-ContextBench Hybrid
     assert.equal(core.normalizeDbrainProtocol('UNKNOWN-v9.9').valid, false);
   });
 
-  it('4.2 computes deterministic 8D LSH embeddings, cosine similarity, and genesis Merkle roots', () => {
+  it('4.2 computes deterministic 8D LSH embeddings, cosine similarity, and genesis Merkle roots with LRU memoization', () => {
     const emb1 = core.computeDeterministicEmbedding('chialisp merkle tree');
+    const emb1Hit = core.computeDeterministicEmbedding('CHIALISP MERKLE TREE');
+    assert.deepEqual(emb1, emb1Hit);
     assert.equal(emb1.length, 8);
     assert.ok(core.cosineSimilarity(emb1, emb1) > 0.99);
     assert.equal(core.cosineSimilarity(null, emb1), 0);
     assert.equal(core.cosineSimilarity([0, 0], [0, 0]), 0);
+
+    // Exercise LRU capacity eviction for embedding and Merkle leaf caches
+    for (let i = 0; i < 260; i++) {
+      core.computeDeterministicEmbedding(`lru-embedding-probe-${i}`);
+    }
+    for (let i = 0; i < 520; i++) {
+      core.computeCapsuleLeafHashHex(`6b${i}`, `0x${i}`);
+    }
+    const leafHit = core.computeCapsuleLeafHashHex('6b519', '0x519');
+    assert.match(leafHit, /^[0-9a-f]{64}$/);
+    const cacheStats = core.getDbrainCoreCacheStats();
+    assert.equal(cacheStats.embeddingCache.size, 256);
+    assert.equal(cacheStats.merkleLeafCache.size, 512);
+    assert.ok(cacheStats.embeddingCache.hits >= 1);
+    assert.ok(cacheStats.merkleLeafCache.hits >= 1);
 
     const genesisRoot = core.computeStoreMerkleRoot(SAMPLE_STORE_ID);
     assert.match(genesisRoot, /^0x[0-9a-f]{64}$/);

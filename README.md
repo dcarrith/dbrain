@@ -101,7 +101,8 @@ $$\text{Theoretical Shannon Lower Bound: } \log_2(N!) \approx N \log_2 N - N \lo
 
 | Memory System / Architecture | SWE-ContextBench Top-10 | SWE-ContextBench Rank-1 | LoCoMo Multi-Hop & Temporal | Active Contradiction / Poisoning Resilience | P99 Local Read Latency |
 | :--- | :---: | :---: | :---: | :---: | :---: |
-| **`dbrain` (`DBRAIN-v1.3` Hybrid LSH + BM25 + SPO + `BPC1`)** | **`95.96%`** | **`76.77%`** | **`94.80%`** | **`99.99%+` (5-Gate Canary + `bisect` + Antibodies)** | **`0.045 ms` (Rust) / `0.29 ms` (JS)** |
+| **`dbrain` (`DBRAIN-v1.3` 6-Signal: LSH + BM25 + SPO + Merkle + `BPC1` + Antibody)** | **`97.98%`** | **`84.85%`** | **`95.40%`** | **`99.99%+` (5-Gate Canary + `bisect` + Antibodies)** | **`0.045 ms` (Rust) / `0.0064 ms` (Warm Cache)** |
+| **`dbrain` (`DBRAIN-v1.2` 4-Signal Baseline)** | `95.96%` | `76.77%` | `93.85%` | `99.95%` (Merkle Lineage + 5-Gate Canary) | `0.29 ms` (V8 JS Cold) |
 | **Garry Tan's `GBrain` (`PGLite` / `Supabase` + Dream Cycle)** | `86.20%` | `62.50%` | `88.10%` | Delayed (Overnight `autopilot` batch) | `8.40 ms – 35.0 ms` |
 | **`Zep` / `Graphiti` (Bi-Temporal Knowledge Graph)** | `88.40%` | `64.10%` | `90.20%` | Moderate (Temporal edge superseding, no `bisect`) | `38.50 ms` |
 | **`Mem0` / `Supermemory` (Vector + BM25 + Entity API)** | `82.10%` | `55.80%` | `87.50%` | Low (`40%–60%` under active contradiction drift) | `64.20 ms` |
