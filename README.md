@@ -2,6 +2,7 @@
 
 **Verifiable 5-Lobe Merkle-DAG Cortex, Hardware-Accelerated Rust/WASM (`BPC1` + SIMD) Recall Engine, Self-Defending `.dig` Capsules, Git-for-Agent-Memories VCS, MCP `2024-11-05` Server & `CHIP-0028`/`CHIP-0043` Air-Gapped Clear Signing for Homelabs, Local Communities, and Whole Cities.**
 
+[![Whitepaper: Oct 31, 2026](https://img.shields.io/badge/Whitepaper-Oct_31%2C_2026-f59e0b.svg)](./WHITEPAPER.md)
 [![Protocol: DBRAIN-v1.3](https://img.shields.io/badge/Protocol-DBRAIN--v1.3-10b981.svg)](./lib/dbrain-core.js)
 [![License: Apache-2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](./LICENSE)
 [![V8 Coverage: 100.00%](https://img.shields.io/badge/V8_Coverage-100.00%25_Line%2FBranch%2FFunc-brightgreen.svg)](./tests/dbrain-core.test.js)
@@ -9,6 +10,7 @@
 [![Custody: CHIP-0028 / CHIP-0043](https://img.shields.io/badge/Custody-CHIP--0028_%2F_0043_Clear_Signing-purple.svg)](./crates/dbrain-core-rs/src/clear_signing.rs)
 [![Post-Quantum: ML-DSA-65 + Ed25519](https://img.shields.io/badge/PQC-FIPS--204_ML--DSA--65_%2B_Ed25519-38bdf8.svg)](./lib/dbrain-core.js)
 
+> **Read the Founding Whitepaper (October 31, 2026):** **[`WHITEPAPER.md` — *`dbrain`: A Peer-to-Peer Electronic Cognition and Verifiable Agent Memory System*](./WHITEPAPER.md)**  
 > **Flagship Reference Deployment:** See `dbrain` running live at production scale on **[`https://dbrain.to`](https://dbrain.to)** — *The Decentralized Brain to Your AI Agents™* — which embeds this repository as its core engine submodule (`packages/dbrain`).
 
 ---
