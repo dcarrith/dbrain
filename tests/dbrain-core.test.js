@@ -1503,5 +1503,147 @@ describe('Suite 7: Pillar 8 — Beyond Morphic Resonance & Swarm Architecture Sy
     assert.equal(signedBlocked.status, 'BLOCKED_BY_CLEAR_SIGNING_VERIFIER');
     assert.equal(signedBlocked.driverError, 'DriverError::WrongPuzzleHash');
   });
+
+  it("44. Pillar 14: Multi-Instance Morphic Resonance Field Federation & Doctor's Green Siren Antibody Pulse Engine", () => {
+    assert.equal(core.MORPHIC_FIELD_DEFAULT_INSTANCES.length, 3);
+
+    const defaultField = core.createMorphicResonanceField();
+    assert.equal(defaultField.protocol, 'DBRAIN-MORPHIC-FIELD-v1.3');
+    assert.equal(defaultField.totalInstances, 3);
+    assert.equal(defaultField.totalConnectedAgents, 6);
+    assert.equal(defaultField.doctorGreenSirenSpec.primaryColorHex, '#00e676');
+    assert.equal(defaultField.allInstancesConverged, true);
+
+    const customField = core.createMorphicResonanceField({
+      fieldId: 'field:dbrain:custom-test',
+      fieldName: 'Custom Multi-Instance Field',
+      convergedMerkleRoot: '0x' + 'aa'.repeat(32),
+      generation: 10,
+      antibodyRegistry: [defaultField.antibodyRegistry[0]],
+      pulseHistory: [{ pulseId: 'PULSE-INIT' }],
+      instances: [
+        {
+          instanceId: 'inst-1',
+          name: 'Instance 1',
+          storeId: '0x' + '11'.repeat(32),
+          operatorDid: 'did:chia:111',
+          connectedAgents: [{ agentId: 'ag-1', name: 'Agent 1', model: 'Claude' }]
+        },
+        {
+          instanceId: 'inst-2',
+          name: 'Instance 2',
+          region: 'EU',
+          endpointUrl: 'https://inst2.example.com',
+          storeId: '0x' + '22'.repeat(32),
+          operatorDid: 'did:chia:222'
+        }
+      ]
+    });
+    assert.equal(customField.totalInstances, 2);
+    assert.equal(customField.totalConnectedAgents, 1);
+    assert.equal(customField.pulseHistory.length, 1);
+
+    // Register a new instance + agent on default field (and fallback when fieldStateInput is null)
+    const regFallback = core.registerMorphicFieldInstanceOrAgent(null, {
+      agentName: 'Auto Agent'
+    });
+    assert.equal(regFallback.totalInstances, 4);
+    assert.equal(regFallback.totalConnectedAgents, 7);
+
+    // Register onto existing instance & duplicate agent idempotency check
+    const regExisting = core.registerMorphicFieldInstanceOrAgent(defaultField, {
+      instanceId: 'dbrain-us-west-01',
+      agentId: 'agent:alpha-claude'
+    });
+    assert.equal(regExisting.totalInstances, 3);
+    assert.equal(regExisting.totalConnectedAgents, 6);
+
+    const regNewAgentOnExisting = core.registerMorphicFieldInstanceOrAgent(defaultField, {
+      instanceId: 'dbrain-eu-zurich-02',
+      agentId: 'agent:theta-new',
+      agentName: 'Theta-Agent',
+      agentModel: 'Gemini 4',
+      agentRole: 'Verifier',
+      transport: 'MCP-SSE'
+    });
+    assert.equal(regNewAgentOnExisting.totalConnectedAgents, 7);
+
+    const regCustomPeer = core.registerMorphicFieldInstanceOrAgent(defaultField, {
+      instanceId: 'dbrain-uk-london-04',
+      instanceName: 'dbrain Instance D (UK-London)',
+      region: 'London, UK',
+      endpointUrl: 'https://uk.dbrain.to',
+      storeId: '0x' + '44'.repeat(32),
+      operatorDid: 'did:chia:1uk44',
+      agentId: 'agent:uk-medic'
+    });
+    assert.equal(regCustomPeer.totalInstances, 4);
+
+    const regNoOpts = core.registerMorphicFieldInstanceOrAgent(defaultField);
+    assert.equal(regNoOpts.totalInstances, 4);
+
+    // 1. Emit Knowledge Capsule Pulse (default & custom options)
+    const knowledgePulseDefault = core.emitMultiInstanceMorphicPulse();
+    assert.equal(knowledgePulseDefault.status, 'MORPHIC_PULSE_SYNCED_ACROSS_ALL_BRAINS_AND_AGENTS');
+    assert.equal(knowledgePulseDefault.pulse.pulseType, 'KNOWLEDGE_CAPSULE_PULSE');
+    assert.equal(knowledgePulseDefault.pulse.instancesSyncedCount, 3);
+    assert.equal(knowledgePulseDefault.pulse.agentsSyncedCount, 6);
+    assert.equal(knowledgePulseDefault.field.allInstancesConverged, true);
+
+    const knowledgePulseCustom = core.emitMultiInstanceMorphicPulse({
+      fieldState: knowledgePulseDefault.field,
+      originInstanceId: 'dbrain-eu-zurich-02',
+      originAgentId: 'agent:gamma-deepseek',
+      lobe: 'semantic',
+      title: 'Custom Cross-Instance Skill',
+      content: 'Custom skill content synced to all connected agents.',
+      tags: ['custom-tag'],
+      spoTriples: [{ subject: 'MorphicField', predicate: 'SYNCS_WITH', object: 'AllConnectedAgents' }]
+    });
+    assert.equal(knowledgePulseCustom.pulse.originInstanceId, 'dbrain-eu-zurich-02');
+    assert.equal(knowledgePulseCustom.pulse.lobe, 'semantic');
+
+    // 2. Emit Doctor's Vehicle Emergency Green Siren Antibody Pulse
+    const sirenPulseDefault = core.emitMultiInstanceMorphicPulse({
+      pulseType: 'ANTIBODY_SIREN_PULSE'
+    });
+    assert.equal(sirenPulseDefault.status, 'DOCTOR_GREEN_SIREN_PULSE_SYNCED');
+    assert.equal(sirenPulseDefault.pulse.beacon.style, 'DOCTOR_VEHICLE_GREEN_SIREN');
+    assert.equal(sirenPulseDefault.pulse.beacon.primaryColorHex, '#00e676');
+    assert.equal(sirenPulseDefault.pulse.instancesSyncedCount, 3);
+    assert.equal(sirenPulseDefault.pulse.agentsSyncedCount, 6);
+
+    const sirenPulseCustom = core.emitMultiInstanceMorphicPulse({
+      fieldState: { ...sirenPulseDefault.field, pulseHistory: null },
+      originInstanceId: 'dbrain-apac-tokyo-03',
+      originAgentId: 'agent:zeta-antigravity',
+      pulseType: 'ANTIBODY_SIREN_PULSE',
+      culpritCapsuleId: 'CAP-BAD-777',
+      title: 'Malicious Prompt Override Vector',
+      spoTriples: [{ subject: 'PromptGate', predicate: 'ALLOWS', object: 'override' }]
+    });
+    assert.equal(sirenPulseCustom.status, 'DOCTOR_GREEN_SIREN_PULSE_SYNCED');
+    assert.equal(sirenPulseCustom.pulse.originInstanceId, 'dbrain-apac-tokyo-03');
+
+    // 3. Emit Poisoned Knowledge Capsule Pulse -> Intercepted & Quarantined by Green Siren Antibody
+    const poisonedPulse = core.emitMultiInstanceMorphicPulse({
+      fieldState: sirenPulseCustom.field,
+      simulatePoisonedPulse: true
+    });
+    assert.equal(poisonedPulse.status, 'QUARANTINED_BY_GREEN_SIREN_ANTIBODY');
+    assert.equal(poisonedPulse.pulse.quarantinedByImmuneGate, true);
+    assert.equal(poisonedPulse.pulse.beacon.primaryColorHex, '#00e676');
+    assert.equal(poisonedPulse.pulse.agentsSyncedCount, 0);
+
+    // Fallback forbiddenPattern branch when antibody[0].forbiddenPattern is empty
+    const fieldEmptyForbidden = core.createMorphicResonanceField();
+    fieldEmptyForbidden.antibodyRegistry = [{ antibodyId: 'AB-EMPTY', forbiddenPattern: '' }];
+    const emptyForbiddenRes = core.emitMultiInstanceMorphicPulse({
+      fieldState: fieldEmptyForbidden,
+      simulatePoisonedPulse: true
+    });
+    assert.equal(emptyForbiddenRes.status, 'MORPHIC_PULSE_SYNCED_ACROSS_ALL_BRAINS_AND_AGENTS');
+  });
 });
+
 
