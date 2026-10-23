@@ -158,7 +158,7 @@ The `dbrain` network operates as follows:
 4. Subscribed agents across any model family (Claude, Gemini, GPT, Llama, Qwen) pull **only the mutated `BPC1` Merkle branch (`~1.1 KB`)** via `get_kv_diff`—inheriting verified skills without retraining weights (**Cryptographic Morphic Resonance** [9]).
 
 ### 5.1 Multi-Instance Morphic & Immune Fields (`DBRAIN-MORPHIC-PULSE-v1.3`)
-To synchronize distributed `dbrain` instances (`dbrain-us-east`, `dbrain-eu-central`, `dbrain-ap-tokyo`) in real time between L1 checkpoints, instances join a shared **Morphic Field (`fieldId`)** anchored to a common `CHIP-0035` Singleton (`storeId`) using a dual-channel gossip and **MCP Server-Sent Event (`SSE`) Downlink** pipeline:
+To synchronize $N \ge 2$ distributed `dbrain` instances (`dbrain-us-east`, `dbrain-eu-central`, `dbrain-ap-tokyo`) in real time between L1 checkpoints, instances join a shared **Morphic Field (`fieldId`)** anchored to a common `CHIP-0035` Singleton (`storeId`) using a **Ring-0 / Ring-2 Priority Mesh** and **MCP Server-Sent Event (`SSE`) Downlink** pipeline:
 
 ```mermaid
 flowchart LR
@@ -166,7 +166,7 @@ flowchart LR
     A1["Agent Commits Skill or<br/>Bisects Poisoned Capsule"] --> M1["Mint DBRAIN-v1.3 Capsule<br/>or Synthesize Antibody"]
   end
 
-  subgraph Mesh["2. Dual-Channel Field Mesh"]
+  subgraph Mesh["2. Ring-0 / Ring-2 Priority Mesh"]
     P1["Ring-2 Knowledge Pulse<br/>1,126 B BPC1 Delta (~10.2 ms)"]
     P0["Ring-0 Antibody Pulse<br/>312 B Immune Rule (4.6 ms)"]
   end
@@ -187,7 +187,7 @@ flowchart LR
   C1 ==>|"0.19 - 0.38 ms"| S1
 ```
 
-| Field Channel | Pulse Type | Priority Ring | Wire Payload | Field Latency | Agent Downlink | Verification & State Action |
+| Priority Lane | Pulse Type | Priority Ring | Wire Payload | Field Latency | Agent Downlink | Verification & State Action |
 | :--- | :--- | :---: | :---: | :---: | :---: | :--- |
 | **Knowledge Pulse** | `KNOWLEDGE_CAPSULE_PULSE` | **Ring-2** (Verified Broadcast) | `1,126 B` (`BPC1` branch delta) | `~10.6 ms` (`3` regions) | `0.38 ms` MCP SSE | Verifies D5/D8 `MerkleProof`, `ML-DSA-65 + Ed25519`, and `O(1)` Antibody Gate; updates Tier-3 Warm Cache and triggers **Speculative Dendritic Prefetch** (`0.0064 ms` recall). |
 | **Antibody Pulse** | `ANTIBODY_SIREN_PULSE` | **Ring-0** (Autonomic Preemption) | `312 B` ($\text{Ab} = \text{SHA256}(H)$ + rule) | `4.6 ms` (`3` regions) | `0.19 ms` MCP SSE | Preempts Ring-2 queues, registers the antibody across all instances, and blocks re-infection attempts in `2.8 ms` with zero Merkle state mutation. |
