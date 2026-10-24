@@ -1,6 +1,6 @@
 {
   "name": "@dbrain/core",
-  "version": "1.10.0",
+  "version": "1.11.0",
   "description": "dbrain — Open-Source Decentralized Brain Engine (5-Lobe Merkle Cortex, Rust/WASM BPC Accelerator, .dig Capsules, MCP 2024-11-05 & CHIP-0043 Air-Gapped Clear Signing) for Homelabs, Local Communities, and Cities",
   "license": "Apache-2.0",
   "repository": {
